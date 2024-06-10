@@ -1,6 +1,28 @@
+{% extends 'shared/base.html' %}
+{% load static %}
+
+
+
+{% block content %}
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <h1>تماس با ما</h1>
-<form action="{% url 'contact:contact_page' %}" method="post">
-    {% csrf_token %}
-    {{form}}
-    <input type="submit" value="ثبت و ارسال">
-</form>
+<div class="container">
+    <form action="{% url 'contact:contact_page' %}" method="post">
+            {% csrf_token %}
+
+        {{form}}
+        <br>
+        <input class="btn-success form-control" type="submit" value="ثبت و ارسال">
+    </form>
+</div>
+{% endblock %}
