@@ -30,9 +30,13 @@ class ContactForm(forms.Form):
                                     'class':'form-control col-md-12',
                                     'rows':'5',
                                 }))
+    picture = forms.ImageField(label='عکس',
+                                    widget=forms.FileInput(attrs={
+                                    'class':'form-control',
+                               }))
     
 class ContactForm2(forms.ModelForm):
     class Meta:
         model = Contact
-        fields = ['subject','full_name','email','phone_number','text']
+        fields = ['subject','full_name','email','phone_number','text','picture']
         

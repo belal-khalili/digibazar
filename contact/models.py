@@ -9,6 +9,7 @@ class Contact(models.Model):
     text = models.TextField()
     admin_response = models.TextField(null=True,blank=True)
     created = models.DateTimeField(auto_now_add=True)
+    picture = models.ImageField(upload_to='contact',null=True,blank=True)
 
     def __str__(self) -> str:
         return f'{self.subject} / {self.full_name} / {self.created.date()}'
