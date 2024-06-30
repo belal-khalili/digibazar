@@ -1,4 +1,6 @@
 from django.apps import AppConfig
-class UserPanelConfig(AppConfig):
+
+
+class ProfilePhotoConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'user_panel'
+    name = 'profile_photo'

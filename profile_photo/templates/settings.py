@@ -1,0 +1,1 @@
+DEFULT_PROFILE='<img src="https://graph.facebook.com/[app-scoped-id]/picture" />'
