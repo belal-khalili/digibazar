@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'contact',
     'product',
     'account',
+    'user_panel',
     'django.contrib.humanize',
 ]
 

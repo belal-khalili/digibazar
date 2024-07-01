@@ -9,3 +9,4 @@ class User(AbstractUser):
     address = models.TextField(null=True,blank=True)
     # verification code
     v_code = models.CharField(max_length=5,default=False,null=True,blank=True)
+    
