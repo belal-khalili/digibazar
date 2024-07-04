@@ -1,8 +1,7 @@
 from django.db import models
-
+from category.models import Category
 # Create your models here.
     
-
 
 class Product(models.Model):
     title = models.CharField(max_length=300)
@@ -12,6 +11,7 @@ class Product(models.Model):
     is_active = models.BooleanField(default=True)
     is_delete = models.BooleanField(default=False)
     main_picture = models.ImageField(upload_to='product', null=True, blank=True)
+    category = models.ManyToManyField(Category)
     
     def __str__(self) -> str:
         return self.title

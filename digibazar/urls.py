@@ -25,7 +25,8 @@ urlpatterns = [
     path('contact/',include('contact.urls')),
     path('product/',include('product.urls')),
     path('account/',include('account.urls')),
-    path('user-panel/', include('user_panel.urls'))
+    path('user-panel/', include('user_panel.urls')),
+    path('cat/', include('category.urls')),
 ]
 
 # urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

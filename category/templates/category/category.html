@@ -1,0 +1,51 @@
+{% extends 'shared/base.html' %}
+{% load humanize %}
+
+{% block content %}
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<h1>شما در دسته بندی {{cat_name}} هستید</h1>
+
+<div class="col-12 px-res-0">
+    <div class="product-carousel carousel-md owl-carousel owl-theme">
+        {% for product in products %}
+        <div class="item">
+            <div class="product-card">
+                <div class="product-head">
+                </div>
+                <a class="product-thumb" href="shop-single.html">
+                    {% if product.main_picture %}
+                        <img src="{{product.main_picture.url}}" alt="Product Thumbnail">
+                    {% else %}
+                        <img src="/static/img/products/07.jpg" alt="Product Thumbnail">
+                    {% endif %}
+                </a>
+                <div class="product-card-body">
+                    <h5 class="product-title ">
+                        <a href="shop-single.html" class="align-self-center">{{ product.title }}</a>
+                    </h5>
+                    <div class="row">
+                        <a href="{% url 'product:single_product_page' slug=product.slug %}" class="btn btn-danger col align-self-end">مشاهده محصول</a>
+                        <h5 class="product-price col align-self-start">{{product.price|intcomma}} تومان</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+            <h1>هنوز محصولی در فروشگاه وجود ندارد</h1>
+        {% endfor %}
+
+    </div>
+</div>
+
+{% endblock %}
