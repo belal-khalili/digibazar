@@ -1,5 +1,6 @@
 {% extends 'shared/base.html' %}
 
+{% block title %}{{product.title}}{% endblock %}
 {% block content %}
 <main class="main-content dt-sl mb-3">
     <div class="container main-container">
@@ -154,7 +155,7 @@
                             <h2>قیمت : <span class="price">{{ product.price }} تومان</span> </h2>
                         </div>
                         <div class="dt-sl mt-4">
-                            <a href="#" class="btn-primary-cm btn-with-icon">
+                            <a onclick="add_product_to_cart({{product.id}})" href="#" class="btn-primary-cm btn-with-icon">
                                 <img src="/static/img/theme/shopping-cart.png" alt="">
                                 افزودن به سبد خرید
                             </a>
@@ -163,7 +164,7 @@
                 </div>
             </div>
             <div class="mb-add-to-cart-btn-wrapper">
-                <a href="#" class="mb-add-to-cart-btn">افزودن به سبد خرید</a>
+                <a href="#" class="mb-add-to-cart-btn" onclick="add_product_to_cart({{product.id}})">افزودن به سبد خرید</a>
             </div>
         </div>
         <div class="dt-sn mb-5 px-0 dt-sl pt-0">
@@ -1250,4 +1251,8 @@
         <!-- End Product-Slider -->
     </div>
 </main>
+{% endblock %}
+
+{% block additional_js %}
+<script src="/static/js/custom.js"></script>
 {% endblock %}

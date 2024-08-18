@@ -10,7 +10,7 @@
     <meta name="theme-color" content="#f7858d">
     <meta name="msapplication-navbutton-color" content="#f7858d">
     <meta name="apple-mobile-web-app-status-bar-style" content="#f7858d">
-    <title>didikala | Index Page</title>
+    <title>didikala | {% block title %}Index Page{% endblock %}</title>
     <!-- Font Icon -->
     <link rel="stylesheet" href="/static/css/vendor/font-awesome.min.css">
     <link rel="stylesheet" href="/static/css/vendor/materialdesignicons.min.css">
@@ -340,7 +340,7 @@
                                 <a class="nav-link" href="#">
                                     <span class="label-dropdown">سبد خرید</span>
                                     <i class="mdi mdi-cart-outline"></i>
-                                    <span class="count">2</span>
+                                    <span id="cart_count" class="count">2</span>
                                 </a>
                                 <div class="header-cart-info">
                                     <div class="header-cart-info-header">
@@ -873,6 +873,9 @@
     </div>
     <!-- end colorPanel -->
     <!-- Core JS Files -->
+    {% block additional_js %}
+
+    {% endblock %}
     <script src="/static/js/vendor/jquery-3.4.1.min.js"></script>
     <script src="/static/js/vendor/popper.min.js"></script>
     <script src="/static/js/vendor/bootstrap.min.js"></script>
