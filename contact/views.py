@@ -20,5 +20,4 @@ def contact(request):
             new_contact.save()
         else:
             return render(request,'contact/contact.html',{'form':form})
-
     return render(request,'contact/contact.html',{'form':ContactForm})
