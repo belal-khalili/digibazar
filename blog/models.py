@@ -1,7 +1,6 @@
 from django.db import models
 from account.models import User
 # Create your models here.
-
 class veblog(models.Model):
     title=models.CharField(max_length=100)
     publisher=models.CharField(max_length=100)
