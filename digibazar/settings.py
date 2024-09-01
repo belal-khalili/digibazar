@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'user_panel',
     'category',
     'cart',
+    'blog',
     'django.contrib.humanize',
 ]
 
