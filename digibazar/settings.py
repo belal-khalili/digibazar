@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'account',
     'user_panel',
     'category',
+    'cart',
     'django.contrib.humanize',
 ]
 
