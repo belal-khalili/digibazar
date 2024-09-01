@@ -7148,6 +7148,10 @@ footer.main-footer .footer-services .service-item img {
     border-radius: 10px;
 }
 
+.post-mad {
+    margin-right: 200px;
+}
+
 .post-card .post-thumbnail {
     position: relative;
     overflow: hidden;

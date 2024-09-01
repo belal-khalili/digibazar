@@ -1,0 +1,86 @@
+{% extends 'shared/base.html' %}
+{% block title %} blog {% endblock %}
+{% load humanize %}
+{% block content %}
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<div class="container main-container">
+    <div class="row mt-5 pt-5">
+
+        <div class="col-lg-9 col-md-8 col-sm-12 col-12 mb-3">
+            <div class="row">
+                {% for blog in this_page %}
+                <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 post-mad">
+                    <div class="post-card">
+                        <div class="post-thumbnail">
+                            <a href="#">
+                                <img src="{{ blog.img.url }}" alt="">
+                            </a>
+                            <span class="post-tag">{{ blog.publisher }}</span>
+                        </div>
+                        <div class="post-title">
+                            <a href="#">
+                             {{ blog.title }}
+                            </a>
+                            <span class="post-date">
+                                {{ blog.date }}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="col-lg-3 col-md-4 col-sm-12 col-12 mb-3 sidebar sticky-sidebar">
+            <div class="widget-posts dt-sn dt-sl mb-3 border-bottom rounded-0">
+                <div class="title-sidebar dt-sl mb-3">
+                    <h3>جدیدترین نوشته ها</h3>
+                </div>
+                <div class="content-sidebar dt-sl">
+                    {% for blog in recent_blog %}
+                    <div class="item">
+                        <div class="item-inner">
+                            <div class="item-thumb">
+                                <a href="#" class="img-holder">
+                                    <img style="width: 90px; border-radius: 5px; height: 58px;" src="{{ blog.img.url }}" alt="">
+                                </a>
+                            </div>
+                            <p class="title">
+                                <a href="#">{{ blog.title }}</a>
+                            </p>
+                            <div class="item-meta">
+                                <span class="time">{{ blog.date }}</span>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="pagination">
+                {% if this_page.has_previous %}
+                <a href="/blog/?page={{ this_page.paginator_page_number }}" class="prev"><i class="mdi mdi-chevron-double-right"></i></a>
+                {% endif %}
+                {% for page in paginator.page_range %}
+                <a href="/blog/?page={{ page }}" {% if page == this_page.number %} class="active-page" {% endif %}>{{ page }}</a>
+                {% endfor %}
+                {% if this_page.has_next %}
+                <a href="/blog/?page={{ this_page.next_page_number }}" class="next"><i class="mdi mdi-chevron-double-left"></i></a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
