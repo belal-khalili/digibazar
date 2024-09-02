@@ -2,7 +2,7 @@ from django.shortcuts import render
 from .models import Product
 # Create your views here.
 def products(request):
-    data = Product.objects.all().order_by('-id')[:3]
+    data = Product.objects.all().order_by('-id')
     return render(request,'product/products.html',{'products':data})
 
 
