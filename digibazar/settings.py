@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'cart',
     'blog',
     'django.contrib.humanize',
+    'ckeditor',
 ]
 
 MIDDLEWARE = [
