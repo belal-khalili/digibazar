@@ -113,7 +113,7 @@
                                                 class="checkout-summary-price-value-amount" id="total_price">{{user_cart.get_total_price}}</span>
                                             تومان
                                         </div>
-                                        <a href="#" class="mb-2 d-block">
+                                        <a href="{% url 'cart:cart_payment' %}" class="mb-2 d-block">
                                             <button class="btn-primary-cm btn-with-icon w-100 text-center pr-0">
                                                 <i class="mdi mdi-arrow-left"></i>
                                                 ادامه ثبت سفارش
