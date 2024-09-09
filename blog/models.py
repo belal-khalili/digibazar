@@ -15,6 +15,7 @@ class veblog(models.Model):
     main_text = models.TextField()
     img = models.ImageField(upload_to='blog.image', null=True, blank=True)
     date = models.DateField()
+    slug = models.SlugField(max_length=100)
 
     def __str__(self) -> str:
         return self.title
