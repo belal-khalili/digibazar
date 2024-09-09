@@ -14,5 +14,5 @@ def blog_page(request):
 
 
 def single_blog(request,slug):
-    data=veblog.objects.get(slug=slug``)
+    data=veblog.objects.get(slug=slug)
     return render(request,'blog/single-blog.html', {'blog' : data})
