@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
-
+import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -43,8 +43,10 @@ INSTALLED_APPS = [
     'account',
     'user_panel',
     'category',
+    'cart',
     'blog',
     'django.contrib.humanize',
+    'ckeditor',
 ]
 
 MIDDLEWARE = [
@@ -144,3 +146,8 @@ EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'khalilibelal20@gmail.com'
 EMAIL_HOST_PASSWORD = 'qxxc dnss rwmp waov'
+
+
+
+MERCHANT = os.environ.get('DJANGO_MERCHANT_ID')
+SANDBOX = 'www'
