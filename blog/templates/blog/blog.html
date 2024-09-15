@@ -20,13 +20,13 @@
                 <div class="col-xl-3 col-lg-4 col-md-6 col-sm-6 col-12 post-mad">
                     <div class="post-card">
                         <div class="post-thumbnail">
-                            <a href="{% url 'blog:single-blog'  %}">
+                            <a href="{% url 'blog:single-blog' slug=blog.slug %}">
                                 <img src="{{ blog.img.url }}" alt="">
                             </a>
                             <span class="post-tag">{{ blog.publisher }}</span>
                         </div>
                         <div class="post-title">
-                            <a href="{% url 'blog:single-blog'  %}">
+                            <a href="{% url 'blog:single-blog' slug=blog.slug  %}">
                              {{ blog.title }}
                             </a>
                             <span class="post-date">

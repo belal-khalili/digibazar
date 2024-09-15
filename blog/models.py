@@ -9,7 +9,7 @@ class Publisher(models.Model):
     def __str__(self) -> str:
         return self.title
 
-class veblog(models.Model):
+class Blog(models.Model):
     title = models.CharField(max_length=100)
     body=RichTextField(blank=type,null=True)
     publisher = models.ForeignKey(Publisher,on_delete=models.SET_NULL,null=True,blank=True)
@@ -21,3 +21,20 @@ class veblog(models.Model):
 
     def __str__(self) -> str:
         return self.title
+    
+
+class BlogComment(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='user_blogcomment_set')
+    blog = models.ForeignKey(Blog, on_delete=models.CASCADE, related_name='blog_blogcomment_set')
+    date = models.DateTimeField(auto_now_add=True)
+    text = models.TextField()
+    like = models.ManyToManyField(User,related_name='like_blogcomment_set',blank=True)
+    dislike = models.ManyToManyField(User,related_name='dislike_blogcomment_set',blank=True)
+    admin_verify = models.BooleanField(default=False, choices={True:'تایید', False:'رد'})
+    parent = models.ForeignKey('BlogComment', null=True, blank=True, related_name='blogcomment_blogcomment_set', on_delete=models.CASCADE)
+
+    def show_likes(self):
+        return self.like.all().count()
+    
+    def show_dislikes(self):
+        return self.dislike.all().count()
