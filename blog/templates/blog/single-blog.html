@@ -74,6 +74,7 @@
 
                                                     <div class="col-12 mt-3 mb-3">
                                                         <div class="form-row-title mb-2">متن نظر شما (اجباری)</div>
+                                                        <div class="form-row-title mb-2" id="reply_to">نظر عمومی:</div>
                                                         <div class="form-row">
                                                             <textarea class="input-ui pr-2 pt-2" rows="5" id="user_comment_text"
                                                                 placeholder="متن خود را بنویسید"></textarea>
@@ -96,7 +97,7 @@
                             </div>
                             <div class="section-title text-sm-title title-wide no-after-title-wide mb-0 mt-5 dt-sl">
                                 <h2>نظرات کاربران</h2>
-                                <p class="count-comment">{{blog_comments.count}} نظر</p>
+                                <p class="count-comment">{{blog_comments_count}} نظر</p>
                             </div>
                             <ol class="comment-list">
                                 <!-- #comment-## -->
@@ -106,12 +107,14 @@
                                         <div class="row">
                                             <div class="col-12 comment-content">
                                                 <div class="comment-author">
-                                                    توسط {{comment.user}} در تاریخ {{comment.date}}
+                                                    توسط <span id="comment_owner_name_{{comment.id}}">{{comment.user}}</span> در تاریخ {{comment.date}}
                                                 </div>
 
-                                                <p>{{ comment.text }}</p>
+                                                <p id="comment_text_{{comment.id}}">{{ comment.text }}</p>
 
-                                                <div class="footer">
+                                                <div class="footer" style="width: 90%;">
+                                                    <button class="btn btn-info btn-sm float-right" onclick="reply_comment({{comment.id}})">پاسخ دادن به این نظر</button>
+                                                    
                                                     <div class="comments-likes">
                                                         آیا این نظر برایتان مفید بود؟
                                                         <button class="btn-like" data-counter="{{comment.show_likes}}">بله
@@ -124,6 +127,33 @@
                                         </div>
                                     </div>
                                 </li>
+                                {% for item in comment.blogcomment_blogcomment_set.all %}
+                                {% if item.admin_verify == True %}
+                                <li class="mr-5">
+                                    <div class="comment-body mt-3">
+                                        <div class="row">
+                                            <div class="col-12 comment-content">
+                                                <div class="comment-author">
+                                                    توسط {{item.user}} در تاریخ {{item.date}}
+                                                </div>
+
+                                                <p>{{ item.text }}</p>
+
+                                                <div class="footer">
+                                                    <div class="comments-likes">
+                                                        آیا این نظر برایتان مفید بود؟
+                                                        <button class="btn-like" data-counter="{{item.show_likes}}">بله
+                                                        </button>
+                                                        <button class="btn-like" data-counter="{{item.show_dislikes}}">خیر
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                {% endif %}
+                                {% endfor%}
                                 {% endfor %}
                             </ol>
                         </div>

@@ -38,3 +38,6 @@ class BlogComment(models.Model):
     
     def show_dislikes(self):
         return self.dislike.all().count()
+
+    class Meta:
+        ordering = ['-date']

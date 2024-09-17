@@ -17,12 +17,14 @@ def blog_page(request):
 
 def single_blog(request,slug):
     blog=Blog.objects.get(slug=slug)
-    blog_comments = BlogComment.objects.filter(blog=blog, admin_verify=True, parent=None).order_by('-date')
-    return render(request,'blog/single-blog.html', {'blog' : blog, 'blog_comments':blog_comments})
+    blog_comments = BlogComment.objects.filter(blog=blog, admin_verify=True, parent=None)
+    blog_comments_count = BlogComment.objects.filter(blog=blog, admin_verify=True).count()
+    return render(request,'blog/single-blog.html', {'blog' : blog, 'blog_comments':blog_comments, 'blog_comments_count':blog_comments_count})
 
 
 def send_blog_comment(request):
     data = json.loads(request.body)
+    # print(data.get('parent'))
     print(request.user)
     # print(x)
     this_blog = Blog.objects.get(id=data.get('blogid'))
@@ -30,7 +32,8 @@ def send_blog_comment(request):
     new_comment = BlogComment(
         user=request.user,
         blog=this_blog,
-        text= data.get('comment_text')
+        text= data.get('comment_text'),
+        parent_id = data.get('parent')
     )
     new_comment.save()
 
