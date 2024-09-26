@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'blog',
     'django.contrib.humanize',
     'ckeditor',
+    'search',
 ]
 
 MIDDLEWARE = [
