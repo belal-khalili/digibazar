@@ -7,6 +7,8 @@ class Cart(models.Model):
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     is_paid = models.BooleanField(default=False)
     payment_date = models.DateTimeField(blank=True,null=True)
+
+    
     def get_total_price(self):
         total_price = 0
         for item in self.cartitem_set.all():
