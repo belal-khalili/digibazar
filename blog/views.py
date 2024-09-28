@@ -16,10 +16,8 @@ def blog_page(request):
 
 
 def single_blog(request,slug):
-<<<<<<< HEAD
-    data = veblog.objects.get(slug=slug)
-    return render(request,'blog/single-blog.html', {'blog' : data})
-=======
+    data = Blog.objects.get(slug=slug)
+    # return render(request,'blog/single-blog.html', {'blog' : data})
     blog=Blog.objects.get(slug=slug)
     blog_comments = BlogComment.objects.filter(blog=blog, admin_verify=True, parent=None)
     blog_comments_count = BlogComment.objects.filter(blog=blog, admin_verify=True).count()
@@ -43,4 +41,3 @@ def send_blog_comment(request):
 
 
     return JsonResponse({'status':'ok'})
->>>>>>> e61432aa75961d7b0a4dfb79dd9051e99e40a496
