@@ -12,9 +12,7 @@ def profile_page(request):
 
 
 def profile_info(request):
-    print(request.user.id)
     myuser = User.objects.get(id=request.user.id)
     form = ChangeUserInfo(initial=model_to_dict(myuser))
-    print(request.POST)
     return render(request,'user_panel/profile_info.html',{'form':form})
 

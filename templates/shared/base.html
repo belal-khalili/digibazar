@@ -81,8 +81,8 @@
                                 <li class="nav-item account dropdown">
                                     <a class="nav-link" href="{% url 'profile_page' %}" data-toggle="dropdown" aria-haspopup="true"
                                         aria-expanded="false">
-                                        <span class="label-dropdown">حساب کاربری</span>
-                                        <i class="mdi mdi-account-circle-outline"></i>
+                                        <span class="label-dropdown">{{user.get_full_name}}</span>
+                                        <img style="border-radius: 50%;" height="30" width="30" src="{{user.profile_picture.url}}" alt="">
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-sm dropdown-menu-left">
                                         <a class="dropdown-item" href="{% url 'profile_page' %}">

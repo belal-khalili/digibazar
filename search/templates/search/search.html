@@ -1,0 +1,20 @@
+<html>
+
+<head></head>
+
+<body>
+    <h1>this is search page</h1>
+    <form action="{% url 'search:search' %}" method="post">
+        {% csrf_token %}
+        <input type="text" name="search_keyword" id="search_box"  autocomplete="off">
+        <input type="submit">
+    </form>
+    <ul id="search_results">
+        {% for item in result %}
+        <li>{{item.title}} {{item.price}}</li>
+        {% endfor%}
+    </ul>
+    <script src="/static/js/search.js"></script>
+</body>
+
+</html>

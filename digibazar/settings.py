@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'blog',
     'django.contrib.humanize',
     'ckeditor',
+    'search',
 ]
 
 MIDDLEWARE = [
@@ -72,6 +73,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'utils.context_processors.category_context'
             ],
         },
     },
