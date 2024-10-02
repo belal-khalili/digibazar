@@ -31,7 +31,7 @@
                                     <table class="table table-cart">
                                         <tbody>
                                             {% for cart_item in cart_items %}
-                                            <tr class="checkout-item border-bottom">
+                                            <tr id="remove" class="checkout-item border-bottom">
                                                 <td>
                                                     {% if cart_item.product.main_picture%}
                                                     <img src="{{cart_item.product.main_picture.url}}" alt=""
@@ -40,7 +40,7 @@
                                                     <img src="/static/img/products/no_picture.png" alt="Product"
                                                         width="100">
                                                     {% endif %}
-                                                    <button class="checkout-btn-remove">&times;</button>
+                                                    <button class="checkout-btn-remove" onclick="remove_cart()"></button>   
                                                 </td>
                                                 <td class="text-right">
                                                     <a href="#">
@@ -63,7 +63,8 @@
                                                     <p class="mb-0">تعداد</p>
                                                     <div class="number-input">
                                                         <button
-                                                            onclick="this.parentNode.querySelector('input[type=number]').stepDown()"></button>
+                                                            onclick="decrease_cartitem_amount({{cart_item.id}})">
+                                                        </button>
                                                         <input id="cartItem_{{cart_item.id}}" class="quantity" min="0"
                                                             name="quantity" value="{{cart_item.amount}}" type="number">
                                                         <button onclick="increase_cartitem_amount({{cart_item.id}})"

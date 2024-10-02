@@ -23,6 +23,22 @@ async function increase_cartitem_amount(cartitem_id) {
 }
 
 
+async function decrease_cartitem_amount(cartitem_id) {
+    const res = await fetch(main_domain + '/cart/decrease_cartitem_amount/' + cartitem_id);
+    const x = await res.json();
+    if (x['status'] == 'ok') {
+        document.getElementById('cartItem_' + cartitem_id).value = x['amount']
+        document.getElementById('total_price').innerText = x['total_price']
+    } else {
+        alert('سرور با خطا مواجه شده')
+    }
+}
+
+function remove_cart() {
+    const del = document.getElementById("remove");
+    del.remove();
+}
+
 function getCookie(name) {
     const value = `; ${document.cookie}`;
     const parts = value.split(`; ${name}=`);
