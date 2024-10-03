@@ -51,26 +51,21 @@
                         </div>
                         <div class="col-lg-6 col-md-5 hidden-sm">
                             <div class="search-area dt-sl">
-                                <form action="" class="search">
-                                    <input type="text"
+                                <form action="{% url 'product:products_page' %}" method="post" class="search">
+                                    {% csrf_token %}
+                                    <input type="text" name="search_keyword" id="search_box"  autocomplete="off"
                                         placeholder="نام کالا، برند و یا دسته مورد نظر خود را جستجو کنید…">
                                     <i class="far fa-search search-icon"></i>
-                                    <button class="close-search-result" type="button"><i
-                                            class="mdi mdi-close"></i></button>
+                                    <button class="close-search-result" type="button">
+                                        <i class="mdi mdi-close"></i>
+                                    </button>
                                     <div class="search-result">
-                                        <ul>
+                                        <ul id="search_results">
+                                            {% for item in result %}
                                             <li>
-                                                <a href="#">موبایل</a>
+                                                <a href="#">{{item.title}} {{item.price}}</a>
                                             </li>
-                                            <li>
-                                                <a href="#">مد و پوشاک</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">میکروفن</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">میز تلویزیون</a>
-                                            </li>
+                                            {% endfor%}
                                         </ul>
                                     </div>
                                 </form>
@@ -894,6 +889,7 @@
     <script src="/static/js/vendor/theia-sticky-sidebar.min.js"></script>
     <!-- Main JS File -->
     <script src="/static/js/main.js"></script>
+    <script src="/static/js/search.js"></script>
 </body>
 
 </html>
