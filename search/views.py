@@ -8,9 +8,9 @@ import json
 def search_product(request):
     if request.method == 'POST':
         search_result = Product.objects.filter(title__icontains=request.POST.get('search_keyword'))
-        return render(request,'search/search.html',{'result':search_result})
+        return render(request,'shared/base.html',{'result':search_result})
     else:
-        return render(request,'search/search.html')
+        return render(request,'shared/base.html')
 
 
 def live_search(request):

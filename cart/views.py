@@ -35,11 +35,6 @@ def add_to_cart(request,product_id):
             user_product = Product.objects.get(id=product_id)
             new_cart_item = CartItem(cart=user_cart,product=user_product)
             new_cart_item.save()
-
-    # print(user_cart)
-    print('*'*90)
-    # print(product_id)
-    # print('*'*90)
     return JsonResponse({'status':'ok', 'message':'soma kheyli khobid'})
 
 
@@ -54,7 +49,15 @@ def plus_cart_item(request, cartitem_id):
     user_cart_item = CartItem.objects.get(id=cartitem_id)
     user_cart_item.amount += 1
     user_cart_item.save()
-    # print(cartitem_id)
+    user_cart = Cart.objects.filter(user=request.user ,is_paid = False).first()
+    
+    return JsonResponse({'status':'ok', 'amount':user_cart_item.amount,'total_price':user_cart.get_total_price()})
+
+
+def negative_cart_item(request, cartitem_id):
+    user_cart_item = CartItem.objects.get(id=cartitem_id)
+    user_cart_item.amount -= 1
+    user_cart_item.save()
     user_cart = Cart.objects.filter(user=request.user ,is_paid = False).first()
     
     return JsonResponse({'status':'ok', 'amount':user_cart_item.amount,'total_price':user_cart.get_total_price()})

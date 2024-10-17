@@ -29,8 +29,7 @@ urlpatterns = [
     path('cat/', include('category.urls')),
     path('cart/', include('cart.urls')),
     path('blog/', include('blog.urls')),
-    path('search/',include('search.urls'))
-    
+    path('search/',include('search.urls')),
 ]
 # urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

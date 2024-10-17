@@ -5,13 +5,16 @@
 <body>
     <h1>this is search page</h1>
     <form action="{% url 'search:search' %}" method="post">
-        {% csrf_token %}
+        {% csrf_token %}    
         <input type="text" name="search_keyword" id="search_box"  autocomplete="off">
         <input type="submit">
     </form>
     <ul id="search_results">
         {% for item in result %}
-        <li>{{item.title}} {{item.price}}</li>
+        <div>
+            <li style="display: inline;">{{item.title}} {{item.price}}</li>
+            <img src="{{item.main_picture.url}}" style="width: 3%; height: 5%; border-radius: 30%; margin-top: 1%;">
+        </div>
         {% endfor%}
     </ul>
     <script src="/static/js/search.js"></script>
