@@ -1,3 +1,4 @@
+{% load farsi_date%}
 <!DOCTYPE html>
 <html lang="fa">
 
@@ -1013,6 +1014,8 @@
                                     <div
                                         class="section-title text-sm-title title-wide mb-1 no-after-title-wide dt-sl mb-2 px-res-1">
                                         <h2>ویرایش اطلاعات شخصی</h2>
+                                        <br>
+                                        <h2>تاریخ عضویت شما {{user.date_joined | farsi_date_changer}}</h2>
                                     </div>
                                     <div class="form-ui additional-info dt-sl dt-sn pt-4">
                                         <form action="{% url 'profile_info' %}" method="post">

@@ -1,5 +1,5 @@
 {% extends 'shared/base.html' %}
-
+{% load humanize %}
 {% block title %}{{product.title}}{% endblock %}
 {% block content %}
 <main class="main-content dt-sl mb-3">
@@ -161,7 +161,7 @@
                             <h2>کد محصول:225566</h2>
                         </div>
                         <div class="section-title text-sm-title title-wide no-after-title-wide mb-0 dt-sl">
-                            <h2>قیمت : <span class="price">{{ product.price }} تومان</span> </h2>
+                            <h2>قیمت : <span class="price">{{ product.price | intcomma }} تومان</span> </h2>
                         </div>
                         <div class="dt-sl mt-4">
                             <a onclick="add_product_to_cart({{product.id}})" href="#" class="btn-primary-cm btn-with-icon">

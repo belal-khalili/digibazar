@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import os
+import locale
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -25,12 +26,14 @@ SECRET_KEY = 'django-insecure-kepu85o_6&f4)b6g0v1r$g%r%dqw#nzq9!s3l8&6ok11c@jxwn
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['192.168.214.23','127.0.0.1']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    # 'jazzmin',
+    # 'adminlte3_theme',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -45,9 +48,12 @@ INSTALLED_APPS = [
     'category',
     'cart',
     'blog',
+    'search',
+    # 'adminlte3',
+    'extentions',
     'django.contrib.humanize',
     'ckeditor',
-    'search',
+    'jalali_date',
 ]
 
 MIDDLEWARE = [
@@ -117,7 +123,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Tehran'
 
 USE_I18N = True
 
@@ -132,7 +138,7 @@ STATIC_URL = 'static/'
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'uploads'
 STATICFILES_DIRS = ['static/']
-
+# 
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
@@ -153,3 +159,30 @@ EMAIL_HOST_PASSWORD = 'qxxc dnss rwmp waov'
 
 MERCHANT = os.environ.get('DJANGO_MERCHANT_ID')
 SANDBOX = 'www'
+
+
+JALALI_DATE_DEFAULTS = {
+   # if change it to true then all dates of the list_display will convert to the Jalali.
+   'LIST_DISPLAY_AUTO_CONVERT': False,
+   'Strftime': {
+        'date': '%y/%m/%d',
+        'datetime': '%H:%M:%S _ %y/%m/%d',
+    },
+    'Static': {
+        'js': [
+            # loading datepicker
+            'admin/js/django_jalali.min.js',
+            # OR
+            # 'admin/jquery.ui.datepicker.jalali/scripts/jquery.ui.core.js',
+            # 'admin/jquery.ui.datepicker.jalali/scripts/calendar.js',
+            # 'admin/jquery.ui.datepicker.jalali/scripts/jquery.ui.datepicker-cc.js',
+            # 'admin/jquery.ui.datepicker.jalali/scripts/jquery.ui.datepicker-cc-fa.js',
+            # 'admin/js/main.js',
+        ],
+        'css': {
+            'all': [
+                'admin/jquery.ui.datepicker.jalali/themes/base/jquery-ui.min.css',
+            ]
+        }
+    },
+}

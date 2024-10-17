@@ -1,6 +1,6 @@
 {% extends 'shared/base.html' %}
 {% block title %} blog {% endblock %}
-{% load humanize %}
+{% load farsi_date %}
 {% block content %}
 
 
@@ -107,7 +107,7 @@
                                         <div class="row">
                                             <div class="col-12 comment-content">
                                                 <div class="comment-author">
-                                                    توسط <span id="comment_owner_name_{{comment.id}}">{{comment.user}}</span> در تاریخ {{comment.date}}
+                                                    توسط <span id="comment_owner_name_{{comment.id}}">{{comment.user}}</span> در تاریخ {{comment.date|farsi_date_changer }}
                                                 </div>
 
                                                 <p id="comment_text_{{comment.id}}">{{ comment.text }}</p>
@@ -134,7 +134,7 @@
                                         <div class="row">
                                             <div class="col-12 comment-content">
                                                 <div class="comment-author">
-                                                    توسط {{item.user}} در تاریخ {{item.date}}
+                                                    توسط {{item.user}} در تاریخ {{item.date | farsi_date_changer}}
                                                 </div>
 
                                                 <p>{{ item.text }}</p>

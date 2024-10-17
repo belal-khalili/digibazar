@@ -1,5 +1,6 @@
 from django.db import models
 from category.models import Category
+from account.models import User
 # Create your models here.
     
 
@@ -15,6 +16,13 @@ class Product(models.Model):
     
     def __str__(self) -> str:
         return self.title
+
+class ProductVisit(models.Model):
+    user = models.ForeignKey(User,null=True , on_delete=models.SET_NULL)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    ip_address = models.CharField(max_length=15)
+    # count = models.IntegerField(default=0)
+    # timestamp = models.DateTimeField(auto_now_add=True)
 
         
 class ProductGallery(models.Model):
