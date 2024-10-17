@@ -1,4 +1,3 @@
-
 const search_box = document.getElementById('search_box')
 const search_results = document.getElementById('search_results')
 function live_search(){

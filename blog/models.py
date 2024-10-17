@@ -11,7 +11,7 @@ class Publisher(models.Model):
 
 class Blog(models.Model):
     title = models.CharField(max_length=100)
-    body=RichTextField(blank=type,null=True)
+    body = RichTextField(blank=type,null=True)
     publisher = models.ForeignKey(Publisher,on_delete=models.SET_NULL,null=True,blank=True)
     author = models.ForeignKey(User,on_delete=models.CASCADE,null=True,blank=True)
     main_text = models.TextField()
