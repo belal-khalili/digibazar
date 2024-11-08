@@ -1,5 +1,14 @@
 const search_box = document.getElementById('search_box')
 const search_results = document.getElementById('search_results')
+
+const main_domain = 'http://127.0.0.1:8000'
+
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+}
+
 function live_search(){
 
     const csrfToken = getCookie('csrftoken');

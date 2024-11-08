@@ -51,7 +51,7 @@
                         </div>
                         <div class="col-lg-6 col-md-5 hidden-sm">
                             <div class="search-area dt-sl">
-                                <form action="{% url 'product:products_page' %}" method="post" class="search">
+                                <form action="{% url 'search:search' %}" method="post" class="search">
                                     {% csrf_token %}
                                     <input type="text" name="search_keyword" id="search_box"  autocomplete="off"
                                         placeholder="نام کالا، برند و یا دسته مورد نظر خود را جستجو کنید…">
@@ -890,6 +890,7 @@
     <!-- Main JS File -->
     <script src="/static/js/main.js"></script>
     <script src="/static/js/search.js"></script>
+    <script src="/static/js/custom.js"></script>
 </body>
 
 </html>

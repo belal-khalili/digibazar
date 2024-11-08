@@ -2,9 +2,10 @@ from django.shortcuts import render
 from .models import Product,ProductVisit
 from utils.ip_service import get_client_ip
 from django.db.models import Q
+import json
 # Create your views here.
 def products(request):
-    data = Product.objects.all().order_by('-id')
+    data = Product.objects.filter(is_active=True).order_by('-id')
     return render(request,'product/products.html',{'products':data})
 
 
@@ -28,3 +29,17 @@ def single_product(request,slug):
     # print(request.META)
         
     return render(request, 'product/single_product.html',{'product':data})
+
+
+def product_filter(request):
+    return render(request, 'product/product_filter.html')
+
+
+def filter_result(request):
+    data = json.loads(request.body)
+    print(type(data['filter_val_max']))
+    # filter_range
+    min_price = data['filter_val_min']
+    max_price = data['filter_val_max']
+    products = Product.objects.filter(price__lte=max_price,price__gte=min_price)
+    return render(request,'product/filter_result.html',{'products': products})

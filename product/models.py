@@ -1,6 +1,7 @@
 from django.db import models
 from category.models import Category
 from account.models import User
+from django.utils.html import format_html
 # Create your models here.
     
 
@@ -13,9 +14,15 @@ class Product(models.Model):
     is_delete = models.BooleanField(default=False)
     main_picture = models.ImageField(upload_to='product', null=True, blank=True)
     category = models.ManyToManyField(Category)
-    
+    # sold = models.IntegerField()
+
     def __str__(self) -> str:
         return self.title
+
+
+    def image_tag(self):
+        return format_html(f"<img width=80 height=60 src='{self.main_picture.url}'>")
+     
 
 class ProductVisit(models.Model):
     user = models.ForeignKey(User,null=True , on_delete=models.SET_NULL)
